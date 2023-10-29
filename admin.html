@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ADMIN</title>
+</head>
+<body>
+    <h1>Trang Admin</h1>
+    <div id="disp">
+        <button onclick="ShowFormAdd()">Add</button>
+        <button onclick="ShowList()">List</button>
+    </div>
+            <script>
+
+                let dichvu = ['Tình Duyên', 'Công Việc', ' Vận Hạn', 'Sức Khỏe']
+                ShowList()
+                function ShowList() {
+                    let str = '<h1>XEM BÓI BÀI TÂY BY TRANTRAN</h1> '
+                    for (let i = 0; i < dichvu.length; i++) {
+                        str += `<h3>${dichvu[i]}<button onclick="edit(${i})">Edit</button></h3>`
+                    } document.getElementById('disp').innerHTML = str
+
+                }
+
+                function ShowFormAdd() {
+                    let str = '<input id="inp"><button onclick ="add()">Create</button>'
+                    document.getElementById('disp').innerHTML = str
+                }
+
+                function add() {
+                    dichvu.push(document.getElementById("inp").value)
+                } ShowList()
+
+                function edit(index) {
+                    let str = `<input id="inp" value = "${dichvu[index]}"><button onclick ="save(${index})">Save</button>`
+                    document.getElementById('disp').innerHTML = str
+                }
+
+                function save(index) {
+                    dichvu[index] = document.getElementById("inp").value
+
+                } ShowList()
+
+
+            </script>
+</body>
+</html>
